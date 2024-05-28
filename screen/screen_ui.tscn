@@ -1,0 +1,172 @@
+[gd_scene load_steps=16 format=3 uid="uid://75moamsm2hup"]
+
+[ext_resource type="Texture2D" uid="uid://dc842mgyx7j26" path="res://assets/steel_rod.png" id="1_tihum"]
+[ext_resource type="LabelSettings" uid="uid://b65t6r0sb2vw5" path="res://label.tres" id="2_mtcmk"]
+[ext_resource type="Texture2D" uid="uid://bt4jia1moluhu" path="res://assets/steel_wheel.png" id="3_i3vhn"]
+[ext_resource type="Script" path="res://screen/screen_label.gd" id="3_xw18s"]
+[ext_resource type="Script" path="res://prefabricate/prefabricate_resource.gd" id="4_ia6le"]
+[ext_resource type="Texture2D" uid="uid://b2nehdnn8fo00" path="res://assets/steel_plate.png" id="4_m5hlc"]
+[ext_resource type="Texture2D" uid="uid://o3du4qi67dea" path="res://assets/wood_rod.png" id="5_5sgrb"]
+[ext_resource type="Texture2D" uid="uid://cagp5s4f5klvc" path="res://assets/wood_wheel.png" id="6_lemfr"]
+[ext_resource type="Texture2D" uid="uid://d3b2jmwmlx4e1" path="res://assets/wood_plate.png" id="7_u2jan"]
+
+[sub_resource type="Resource" id="Resource_5tct2"]
+script = ExtResource("4_ia6le")
+prefabricate_material = null
+prefabricate_type = null
+prefabricate_weight = null
+
+[sub_resource type="Resource" id="Resource_pq8mt"]
+script = ExtResource("4_ia6le")
+prefabricate_material = null
+prefabricate_type = 1
+prefabricate_weight = null
+
+[sub_resource type="Resource" id="Resource_h3tir"]
+script = ExtResource("4_ia6le")
+prefabricate_material = null
+prefabricate_type = 2
+prefabricate_weight = null
+
+[sub_resource type="Resource" id="Resource_4dab5"]
+script = ExtResource("4_ia6le")
+prefabricate_material = 1
+prefabricate_type = null
+prefabricate_weight = null
+
+[sub_resource type="Resource" id="Resource_b0m61"]
+script = ExtResource("4_ia6le")
+prefabricate_material = 1
+prefabricate_type = 1
+prefabricate_weight = null
+
+[sub_resource type="Resource" id="Resource_c6i53"]
+script = ExtResource("4_ia6le")
+prefabricate_material = 1
+prefabricate_type = 2
+prefabricate_weight = null
+
+[node name="ScreenUi" type="VBoxContainer"]
+offset_top = 85.0
+offset_right = 1152.0
+offset_bottom = 563.0
+size_flags_vertical = 4
+theme_override_constants/separation = 128
+
+[node name="SteelContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+
+[node name="RodContainer" type="HBoxContainer" parent="SteelContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="TextureRect" type="TextureRect" parent="SteelContainer/RodContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_tihum")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="SteelContainer/RodContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = " 5"
+label_settings = ExtResource("2_mtcmk")
+script = ExtResource("3_xw18s")
+prefabricate = SubResource("Resource_5tct2")
+
+[node name="WheelContainer" type="HBoxContainer" parent="SteelContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="TextureRect" type="TextureRect" parent="SteelContainer/WheelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_i3vhn")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="SteelContainer/WheelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = " 5"
+label_settings = ExtResource("2_mtcmk")
+script = ExtResource("3_xw18s")
+prefabricate = SubResource("Resource_pq8mt")
+
+[node name="PlateContainer" type="HBoxContainer" parent="SteelContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="TextureRect" type="TextureRect" parent="SteelContainer/PlateContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_m5hlc")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="SteelContainer/PlateContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = " 5"
+label_settings = ExtResource("2_mtcmk")
+script = ExtResource("3_xw18s")
+prefabricate = SubResource("Resource_h3tir")
+
+[node name="WoodContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+
+[node name="RodContainer" type="HBoxContainer" parent="WoodContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="TextureRect" type="TextureRect" parent="WoodContainer/RodContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_5sgrb")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="WoodContainer/RodContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = " 5"
+label_settings = ExtResource("2_mtcmk")
+script = ExtResource("3_xw18s")
+prefabricate = SubResource("Resource_4dab5")
+
+[node name="WheelContainer" type="HBoxContainer" parent="WoodContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="TextureRect" type="TextureRect" parent="WoodContainer/WheelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_lemfr")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="WoodContainer/WheelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = " 5"
+label_settings = ExtResource("2_mtcmk")
+script = ExtResource("3_xw18s")
+prefabricate = SubResource("Resource_b0m61")
+
+[node name="PlateContainer" type="HBoxContainer" parent="WoodContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="TextureRect" type="TextureRect" parent="WoodContainer/PlateContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_u2jan")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="WoodContainer/PlateContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = " 5"
+label_settings = ExtResource("2_mtcmk")
+script = ExtResource("3_xw18s")
+prefabricate = SubResource("Resource_c6i53")
