@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var move_speed := 75.0
-@export var jump_velocity := 300.0
-@export var sprint_speed := 125.0
+@export var move_speed := 110.0
 @export var max_weight_capacity := 100
 @export var mobility_curve: Curve
+@export var floor_acceleration := 200.0
+@export var air_acceleration := 200.0
+@export var floor_friction := 1200.0
+@export var air_friction := 0.0
 
 var weight_capacity := 0.0:
 	set(value):
@@ -22,8 +24,12 @@ var direction := 0.0
 var is_jumping := false
 @export var jump_buffer_ms := 0.1
 
+@export var variable_jump_velocity_min := 100.0
+@export var variable_jump_velocity_max := 450.0
+var variable_jump_velocity := 0.0
+
 var is_on_coyote_floor := false
-@export var jump_coyote_ms := 0.1
+@export var jump_coyote_ms := 0.15
 
 var jump_buffer_timer: Timer = Timer.new()
 var jump_coyote_timer: Timer = Timer.new()
@@ -53,17 +59,24 @@ func _ready() -> void:
 	setup_jump_timer()
 	setup_coyote_timer()
 
-func _input(event: InputEvent) -> void:
-	direction = Input.get_axis("move_left", "move_right")
-
-	if event.is_action_pressed("jump"):
-		is_jumping = true
-		jump_buffer_timer.start(jump_buffer_ms)
-
 func _process(delta: float) -> void:
 	# Add the gravity.
+	direction = Input.get_axis("move_left", "move_right")
+
+	if Input.is_action_just_pressed("jump"):
+		is_jumping = true
+		variable_jump_velocity = 0
+		jump_buffer_timer.start(jump_buffer_ms)
+
+	if Input.is_action_pressed("jump"):
+		variable_jump_velocity += gravity * delta * 1.5
+
+	if Input.is_action_just_released("jump"):
+		variable_jump_velocity = 0
+		is_jumping = false
+
 	if not is_on_floor():
-		if jump_coyote_timer.is_stopped():
+		if !is_jumping and jump_coyote_timer.is_stopped():
 			jump_coyote_timer.start(jump_coyote_ms)
 
 	if is_on_floor():
@@ -77,24 +90,27 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _physics_process(delta: float) -> void:
+		
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if is_jumping and is_on_coyote_floor:
-		is_jumping = false
-		is_on_coyote_floor = false
-		velocity.y = -jump_velocity
+	var can_jump = is_jumping and is_on_coyote_floor
+	if can_jump:
+		velocity.y = -min(variable_jump_velocity_min + variable_jump_velocity, variable_jump_velocity_max)
 
 	if direction:
-		velocity.x = direction * get_speed()
+		if (sign(velocity.x) != sign(direction)):
+			velocity.x = move_toward(velocity.x, direction * move_speed, delta * get_acceleration() * 2)
+		else:
+			velocity.x = move_toward(velocity.x, direction * move_speed, delta * get_acceleration())
 	else:
-		velocity.x = move_toward(velocity.x, 0, get_speed())
+		velocity.x = move_toward(velocity.x, 0, delta * get_friction())
 
 func anim_sprite():
 	if is_on_floor():
 		can_anim_jump = true
 		if direction:
-			if abs(velocity.x) > move_speed:
+			if abs(velocity.x) > move_speed * 0.9:
 				if direction > 0:
 					animated_sprite.play("run_right")
 				if direction < 0:
@@ -123,11 +139,15 @@ func anim_sprite():
 				animated_sprite.play("jump_left")
 				return
 
-func get_speed() -> float:
-	var mobility_modifier = mobility_curve.sample(weight_capacity)
-	if Input.is_action_pressed("sprint"):
-		return sprint_speed * mobility_modifier
-	return move_speed * mobility_modifier
+func get_acceleration() -> float:
+	if is_on_floor():
+		return floor_acceleration
+	return air_acceleration
+
+func get_friction() -> float:
+	if is_on_floor():
+		return floor_friction
+	return air_friction
 
 func handle_backpack_change(p: PrefabricateResource, count: int) -> void:
 	weight_capacity = p.prefabricate_weight
