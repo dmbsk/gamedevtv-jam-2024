@@ -1,34 +1,32 @@
-[gd_scene load_steps=16 format=3 uid="uid://cua6u88sberab"]
+[gd_scene load_steps=17 format=3 uid="uid://cua6u88sberab"]
 
 [ext_resource type="Script" path="res://ui/backpack_label.gd" id="1_ayopo"]
+[ext_resource type="FontFile" uid="uid://cgl80oo30bhl1" path="res://assets/PixelifySans-Regular.ttf" id="1_st0mo"]
 [ext_resource type="Script" path="res://prefabricate/prefabricate_resource.gd" id="4_pfxuk"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oop1f"]
 load_path = "res://.godot/imported/steel_rod.png-98385d70bc2ede8da83977508d6d4ad8.ctex"
 
-[sub_resource type="Resource" id="Resource_tyvr7"]
+[sub_resource type="Resource" id="Resource_nng56"]
 script = ExtResource("4_pfxuk")
-prefabricate_material = null
-prefabricate_type = null
-prefabricate_weight = null
+prefabricate_material = 0
+prefabricate_type = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2yu3s"]
 load_path = "res://.godot/imported/steel_wheel.png-e6f854c9c2e8254b78460f70af7edaa1.ctex"
 
 [sub_resource type="Resource" id="Resource_f73e8"]
 script = ExtResource("4_pfxuk")
-prefabricate_material = null
+prefabricate_material = 0
 prefabricate_type = 1
-prefabricate_weight = null
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ds0ac"]
 load_path = "res://.godot/imported/steel_plate.png-ec8f46896c6aa81939bea7193146a0e3.ctex"
 
 [sub_resource type="Resource" id="Resource_pedw8"]
 script = ExtResource("4_pfxuk")
-prefabricate_material = null
+prefabricate_material = 0
 prefabricate_type = 2
-prefabricate_weight = null
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ka0j"]
 bg_color = Color(0.145098, 0.129412, 0.243137, 1)
@@ -39,8 +37,7 @@ load_path = "res://.godot/imported/wood_rod.png-e19b87b62e4e92b9e8e3bcbccc55cf69
 [sub_resource type="Resource" id="Resource_2df8x"]
 script = ExtResource("4_pfxuk")
 prefabricate_material = 1
-prefabricate_type = null
-prefabricate_weight = null
+prefabricate_type = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgf8f"]
 load_path = "res://.godot/imported/wood_wheel.png-5aec158861b54ff5ea4f7b61b46dae7b.ctex"
@@ -49,7 +46,6 @@ load_path = "res://.godot/imported/wood_wheel.png-5aec158861b54ff5ea4f7b61b46dae
 script = ExtResource("4_pfxuk")
 prefabricate_material = 1
 prefabricate_type = 1
-prefabricate_weight = null
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7whjt"]
 load_path = "res://.godot/imported/wood_plate.png-865b7d83c09eb552bd035a997326cb82.ctex"
@@ -57,8 +53,7 @@ load_path = "res://.godot/imported/wood_plate.png-865b7d83c09eb552bd035a997326cb
 [sub_resource type="Resource" id="Resource_ucvet"]
 script = ExtResource("4_pfxuk")
 prefabricate_material = 1
-prefabricate_type = null
-prefabricate_weight = null
+prefabricate_type = 2
 
 [node name="Storage" type="VBoxContainer"]
 anchors_preset = 3
@@ -92,10 +87,13 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="SteelContainer/RodContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_st0mo")
+theme_override_font_sizes/font_size = 24
 text = " 5"
 script = ExtResource("1_ayopo")
-prefabricate = SubResource("Resource_tyvr7")
+prefabricate = SubResource("Resource_nng56")
 
 [node name="WheelContainer" type="HBoxContainer" parent="SteelContainer"]
 layout_mode = 2
@@ -111,7 +109,10 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="SteelContainer/WheelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_st0mo")
+theme_override_font_sizes/font_size = 24
 text = " 5"
 script = ExtResource("1_ayopo")
 prefabricate = SubResource("Resource_f73e8")
@@ -130,7 +131,10 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="SteelContainer/PlateContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_st0mo")
+theme_override_font_sizes/font_size = 24
 text = " 5"
 script = ExtResource("1_ayopo")
 prefabricate = SubResource("Resource_pedw8")
@@ -160,7 +164,10 @@ expand_mode = 3
 [node name="Label" type="Label" parent="WoodContainer/RodContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_st0mo")
+theme_override_font_sizes/font_size = 24
 text = " 5"
 script = ExtResource("1_ayopo")
 prefabricate = SubResource("Resource_2df8x")
@@ -179,7 +186,10 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="WoodContainer/WheelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_st0mo")
+theme_override_font_sizes/font_size = 24
 text = " 5"
 script = ExtResource("1_ayopo")
 prefabricate = SubResource("Resource_6l40j")
@@ -198,7 +208,10 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="WoodContainer/PlateContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_st0mo")
+theme_override_font_sizes/font_size = 24
 text = " 5"
 script = ExtResource("1_ayopo")
 prefabricate = SubResource("Resource_ucvet")

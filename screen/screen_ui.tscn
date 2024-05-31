@@ -14,44 +14,37 @@
 script = ExtResource("4_ia6le")
 prefabricate_material = null
 prefabricate_type = null
-prefabricate_weight = null
 
 [sub_resource type="Resource" id="Resource_pq8mt"]
 script = ExtResource("4_ia6le")
 prefabricate_material = null
 prefabricate_type = 1
-prefabricate_weight = null
 
 [sub_resource type="Resource" id="Resource_h3tir"]
 script = ExtResource("4_ia6le")
 prefabricate_material = null
 prefabricate_type = 2
-prefabricate_weight = null
 
 [sub_resource type="Resource" id="Resource_4dab5"]
 script = ExtResource("4_ia6le")
 prefabricate_material = 1
 prefabricate_type = null
-prefabricate_weight = null
 
 [sub_resource type="Resource" id="Resource_b0m61"]
 script = ExtResource("4_ia6le")
 prefabricate_material = 1
 prefabricate_type = 1
-prefabricate_weight = null
 
 [sub_resource type="Resource" id="Resource_c6i53"]
 script = ExtResource("4_ia6le")
 prefabricate_material = 1
 prefabricate_type = 2
-prefabricate_weight = null
 
 [node name="ScreenUi" type="VBoxContainer"]
-offset_top = 85.0
 offset_right = 1152.0
-offset_bottom = 563.0
+offset_bottom = 647.0
 size_flags_vertical = 4
-theme_override_constants/separation = 128
+theme_override_constants/separation = 167
 
 [node name="SteelContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

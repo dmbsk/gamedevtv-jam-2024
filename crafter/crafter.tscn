@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dih3brk8d26mq"]
+
+[ext_resource type="Script" path="res://crafter/crafter.gd" id="1_6cra2"]
+[ext_resource type="Texture2D" uid="uid://dn5bv2axwgi2o" path="res://assets/tileset.png" id="1_s3o40"]
+[ext_resource type="FontFile" uid="uid://cgl80oo30bhl1" path="res://assets/PixelifySans-Regular.ttf" id="3_6epjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ucol"]
+size = Vector2(16, 16)
+
+[node name="Crafter" type="Area2D"]
+script = ExtResource("1_6cra2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2ucol")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s3o40")
+region_enabled = true
+region_rect = Rect2(208, 96, 16, 16)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 24.0
+scale = Vector2(0.33, 0.33)
+
+[node name="Label" type="Label" parent="Control"]
+z_index = 50
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_right = 120.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_6epjl")
+theme_override_font_sizes/font_size = 24
+text = "Interact to deposit"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

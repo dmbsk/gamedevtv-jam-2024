@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://dulaqu0hrq3b5"]
+
+[ext_resource type="Texture2D" uid="uid://dn5bv2axwgi2o" path="res://assets/tileset.png" id="1_abxfi"]
+[ext_resource type="FontFile" uid="uid://cgl80oo30bhl1" path="res://assets/PixelifySans-Regular.ttf" id="2_c83k6"]
+[ext_resource type="Script" path="res://screen/points_screen.gd" id="2_irtf3"]
+
+[sub_resource type="Animation" id="Animation_ba4f4"]
+resource_name = "Increase"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.22, 0.22), Vector2(0.22, 0.275), Vector2(0.22, 0.22)]
+}
+
+[sub_resource type="Animation" id="Animation_eo1xw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.22, 0.22)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcrgn"]
+_data = {
+"Increase": SubResource("Animation_ba4f4"),
+"RESET": SubResource("Animation_eo1xw")
+}
+
+[node name="PointsScreen" type="Sprite2D"]
+scale = Vector2(1.00304, 0.996956)
+texture = ExtResource("1_abxfi")
+region_enabled = true
+region_rect = Rect2(224, 16, 48, 32)
+script = ExtResource("2_irtf3")
+
+[node name="SalaryContainer" type="MarginContainer" parent="."]
+offset_left = -22.0
+offset_top = -8.87523
+offset_right = 166.0
+offset_bottom = 100.125
+scale = Vector2(0.22, 0.22)
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Salary" type="Label" parent="SalaryContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_c83k6")
+theme_override_font_sizes/font_size = 24
+text = "Salary:"
+
+[node name="ScoreContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -21.9332
+offset_top = -43.0336
+offset_right = 166.067
+offset_bottom = 65.9664
+grow_vertical = 0
+scale = Vector2(0.22, 0.22)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="HBoxContainer" parent="ScoreContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Value" type="Label" parent="ScoreContainer/Score"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c83k6")
+theme_override_font_sizes/font_size = 48
+text = "99999"
+
+[node name="Points" type="Label" parent="ScoreContainer/Score"]
+modulate = Color(0.521569, 0.733333, 0.396078, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c83k6")
+theme_override_font_sizes/font_size = 48
+text = "$"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wcrgn")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true

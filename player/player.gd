@@ -21,7 +21,7 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction := 0.0
 
-var is_jumping := false
+var can_jump := false
 @export var jump_buffer_ms := 0.1
 
 @export var variable_jump_velocity_min := 100.0
@@ -47,7 +47,7 @@ func setup_coyote_timer() -> void:
 	add_child(jump_coyote_timer)
 
 func jump_buffer_timer_timeout():
-	is_jumping = false
+	can_jump = false
 
 func jump_coyote_timer_timeout():
 	is_on_coyote_floor = false
@@ -64,19 +64,19 @@ func _process(delta: float) -> void:
 	direction = Input.get_axis("move_left", "move_right")
 
 	if Input.is_action_just_pressed("jump"):
-		is_jumping = true
+		can_jump = true
 		variable_jump_velocity = 0
 		jump_buffer_timer.start(jump_buffer_ms)
 
 	if Input.is_action_pressed("jump"):
-		variable_jump_velocity += gravity * delta * 1.5
+		variable_jump_velocity += gravity * delta * 1.6
 
 	if Input.is_action_just_released("jump"):
 		variable_jump_velocity = 0
-		is_jumping = false
+		can_jump = false
 
 	if not is_on_floor():
-		if !is_jumping and jump_coyote_timer.is_stopped():
+		if jump_coyote_timer.is_stopped():
 			jump_coyote_timer.start(jump_coyote_ms)
 
 	if is_on_floor():
@@ -94,8 +94,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	var can_jump = is_jumping and is_on_coyote_floor
-	if can_jump:
+	if can_jump and is_on_coyote_floor:
 		velocity.y = -min(variable_jump_velocity_min + variable_jump_velocity, variable_jump_velocity_max)
 
 	if direction:
@@ -139,15 +138,18 @@ func anim_sprite():
 				animated_sprite.play("jump_left")
 				return
 
+func get_mobility() -> float:
+	return mobility_curve.sample(weight_capacity)
+
 func get_acceleration() -> float:
 	if is_on_floor():
-		return floor_acceleration
-	return air_acceleration
+		return floor_acceleration * get_mobility()
+	return air_acceleration * get_mobility()
 
 func get_friction() -> float:
 	if is_on_floor():
-		return floor_friction
-	return air_friction
+		return floor_friction * get_mobility()
+	return air_friction * get_mobility()
 
 func handle_backpack_change(p: PrefabricateResource, count: int) -> void:
 	weight_capacity = p.prefabricate_weight
