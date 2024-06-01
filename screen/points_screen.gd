@@ -37,4 +37,3 @@ func handle_timer_timeout():
 	animation_player.stop()
 	time_diff = 0;
 	total_points = next_points
-	print("stop")

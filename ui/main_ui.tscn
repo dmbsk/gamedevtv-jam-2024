@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq5h6sr7p662f"]
+[gd_scene load_steps=3 format=3 uid="uid://dq5h6sr7p662f"]
 
+[ext_resource type="PackedScene" uid="uid://bwu2oxw53tby8" path="res://ui/stopwatch/stopwatch.tscn" id="1_8hvw7"]
 [ext_resource type="PackedScene" uid="uid://cua6u88sberab" path="res://ui/Storage.tscn" id="2_thlu0"]
 
 [node name="MainUi" type="Control"]
@@ -9,6 +10,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.5
+offset_right = 41.5
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 8
+
+[node name="Stopwatch" parent="MarginContainer" instance=ExtResource("1_8hvw7")]
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Storage" parent="." instance=ExtResource("2_thlu0")]
 layout_mode = 1

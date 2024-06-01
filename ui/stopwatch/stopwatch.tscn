@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwu2oxw53tby8"]
+
+[ext_resource type="FontFile" uid="uid://cgl80oo30bhl1" path="res://assets/PixelifySans-Regular.ttf" id="1_ple80"]
+[ext_resource type="Script" path="res://ui/stopwatch/stopwatch.gd" id="2_eggsx"]
+
+[node name="Stopwatch" type="Label"]
+offset_right = 38.0
+offset_bottom = 39.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("1_ple80")
+theme_override_font_sizes/font_size = 24
+text = "59:99"
+script = ExtResource("2_eggsx")

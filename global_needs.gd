@@ -46,8 +46,5 @@ func update_count(p: PrefabricateResource, count: int) -> void:
 	total_count -= min(currentCount, abs(count))
 	CountUpdated.emit(p, nextCount)
 
-	print("count", count)
-	print("total count", total_count)
 	if total_count == 0:
 		generate_counts()
-		print(prefabricate_counts)

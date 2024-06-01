@@ -12,7 +12,8 @@ class_name Player
 
 var weight_capacity := 0.0:
 	set(value):
-		weight_capacity += clampf(value / max_weight_capacity, 0.0, 1.0)
+		weight_capacity = clampf(value / max_weight_capacity, 0.0, 1.0)
+		print(weight_capacity)
 
 var last_direction := 0.0
 var can_anim_jump := true
@@ -56,6 +57,8 @@ func jump_coyote_timer_timeout():
 
 func _ready() -> void:
 	GlobalBackpack.CountUpdated.connect(handle_backpack_change)
+	GlobalSignals.RoundEnd.connect(handle_time_end)
+	GlobalSignals.CrafterDeposit.connect(handle_deposit)
 	setup_jump_timer()
 	setup_coyote_timer()
 
@@ -151,5 +154,13 @@ func get_friction() -> float:
 		return floor_friction * get_mobility()
 	return air_friction * get_mobility()
 
+func handle_deposit(weight: float) -> void:
+	print("before", weight_capacity)
+	weight_capacity -= weight
+	print("after", weight_capacity)
+
 func handle_backpack_change(p: PrefabricateResource, count: int) -> void:
-	weight_capacity = p.prefabricate_weight
+	weight_capacity = weight_capacity + p.prefabricate_weight
+
+func handle_time_end():
+	set_process(false)

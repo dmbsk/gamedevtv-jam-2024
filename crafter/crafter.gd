@@ -1,5 +1,9 @@
 extends Area2D
 
+class_name Crafter
+
+signal Deposit()
+
 @onready var ui: Control = $Control
 
 var is_player_in_area := false:
@@ -20,12 +24,13 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("interact"):
-		var points = deposit()
-		if points:
-			GlobalSignals.PointsAdd.emit(points)
+		var weight = deposit()
+		if weight:
+			GlobalSignals.CrafterDeposit.emit(weight)
+			GlobalSignals.PointsAdd.emit(weight)
 
 func deposit() -> float:
-	var points := 0.0
+	var weight := 0.0
 	for mat in Prefabricate.PrefabricateMaterial.values():
 		for type in Prefabricate.PrefabricateType.values():
 			var needs_count = GlobalNeeds.prefabricate_counts[mat][type]
@@ -35,6 +40,6 @@ func deposit() -> float:
 			var prefabricateResource: PrefabricateResource = PrefabricateResource.init(mat, type)
 			GlobalNeeds.update_count(prefabricateResource, -backpack_count)
 			GlobalBackpack.update_count(prefabricateResource, -needs_count)
-			points += needs_count * PrefabricateWeight.get_weight(mat, type)
+			weight += needs_count * PrefabricateWeight.get_weight(mat, type)
 
-	return points
+	return weight

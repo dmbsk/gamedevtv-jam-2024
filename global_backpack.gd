@@ -1,6 +1,6 @@
 extends Node
 
-var max_items := 999
+var max_items := 9
 var min_items := 0
 
 var weight := 0.0
@@ -8,14 +8,14 @@ var max_weight_capacity := calculate_max_weight()
 
 var prefabricate_counts: Dictionary = {
   Prefabricate.PrefabricateMaterial.STEEL: {
-  Prefabricate.PrefabricateType.ROD: 999,
-  Prefabricate.PrefabricateType.WHEEL: 999,
-  Prefabricate.PrefabricateType.PLATE: 999,
+  Prefabricate.PrefabricateType.ROD: 0,
+  Prefabricate.PrefabricateType.WHEEL: 0,
+  Prefabricate.PrefabricateType.PLATE: 0,
   },
   Prefabricate.PrefabricateMaterial.WOOD: {
-  Prefabricate.PrefabricateType.ROD: 999,
-  Prefabricate.PrefabricateType.WHEEL: 999,
-  Prefabricate.PrefabricateType.PLATE: 999,
+  Prefabricate.PrefabricateType.ROD: 0,
+  Prefabricate.PrefabricateType.WHEEL: 0,
+  Prefabricate.PrefabricateType.PLATE: 0,
   }
 }
 
