@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnad4r3nwxpy"]
+
+[ext_resource type="PackedScene" uid="uid://dculyml8jgjup" path="res://interact/interact.tscn" id="1_ct5vj"]
+
+[node name="InteractGameStart" instance=ExtResource("1_ct5vj")]
+
+[node name="Label" parent="Control" index="0"]
+text = "Interact to start game"

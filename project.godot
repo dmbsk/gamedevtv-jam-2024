@@ -11,15 +11,14 @@ config_version=5
 [application]
 
 config/name="Lastshift"
-run/main_scene="res://main_level.tscn"
+run/main_scene="res://levels/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalNeeds="*res://global_needs.gd"
-GlobalBackpack="*res://global_backpack.gd"
-GlobalSignals="*res://global_signals.gd"
+GlobalNeeds="*res://globals/global_needs.gd"
+GlobalBackpack="*res://globals/global_backpack.gd"
+GlobalSignals="*res://globals/global_signals.gd"
 
 [debug]
 

@@ -10,10 +10,12 @@ class_name Player
 @export var floor_friction := 1200.0
 @export var air_friction := 0.0
 
+@onready var jump_audio: AudioStreamPlayer2D = $JumpAudio
+var jump_audio_can_play := true
+
 var weight_capacity := 0.0:
 	set(value):
 		weight_capacity = clampf(value / max_weight_capacity, 0.0, 1.0)
-		print(weight_capacity)
 
 var last_direction := 0.0
 var can_anim_jump := true
@@ -84,6 +86,8 @@ func _process(delta: float) -> void:
 
 	if is_on_floor():
 		is_on_coyote_floor = true
+		jump_audio_can_play = true
+		jump_audio.stop()
 		jump_coyote_timer.stop()
 
 	if direction:
@@ -93,11 +97,13 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _physics_process(delta: float) -> void:
-		
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	if can_jump and is_on_coyote_floor:
+		if !jump_audio.playing:
+			jump_audio.play()
 		velocity.y = -min(variable_jump_velocity_min + variable_jump_velocity, variable_jump_velocity_max)
 
 	if direction:
@@ -155,9 +161,7 @@ func get_friction() -> float:
 	return air_friction * get_mobility()
 
 func handle_deposit(weight: float) -> void:
-	print("before", weight_capacity)
 	weight_capacity -= weight
-	print("after", weight_capacity)
 
 func handle_backpack_change(p: PrefabricateResource, count: int) -> void:
 	weight_capacity = weight_capacity + p.prefabricate_weight

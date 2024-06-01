@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2nol876vpup4"]
+
+[ext_resource type="PackedScene" uid="uid://dculyml8jgjup" path="res://interact/interact.tscn" id="1_d0u46"]
+[ext_resource type="Script" path="res://crafter/crafter.gd" id="2_8btav"]
+
+[node name="Interact" instance=ExtResource("1_d0u46")]
+
+[node name="Crafter" type="Node2D" parent="." index="3"]
+script = ExtResource("2_8btav")
+
+[connection signal="Act" from="." to="Crafter" method="_on_interact_act"]

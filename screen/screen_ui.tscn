@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://75moamsm2hup"]
 
 [ext_resource type="Texture2D" uid="uid://dc842mgyx7j26" path="res://assets/steel_rod.png" id="1_tihum"]
-[ext_resource type="LabelSettings" uid="uid://b65t6r0sb2vw5" path="res://label.tres" id="2_mtcmk"]
+[ext_resource type="FontFile" uid="uid://cgl80oo30bhl1" path="res://assets/PixelifySans-Regular.ttf" id="2_hurkk"]
 [ext_resource type="Texture2D" uid="uid://bt4jia1moluhu" path="res://assets/steel_wheel.png" id="3_i3vhn"]
 [ext_resource type="Script" path="res://screen/screen_label.gd" id="3_xw18s"]
 [ext_resource type="Script" path="res://prefabricate/prefabricate_resource.gd" id="4_ia6le"]
@@ -64,8 +64,10 @@ expand_mode = 3
 [node name="Label" type="Label" parent="SteelContainer/RodContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hurkk")
+theme_override_font_sizes/font_size = 190
 text = " 5"
-label_settings = ExtResource("2_mtcmk")
 script = ExtResource("3_xw18s")
 prefabricate = SubResource("Resource_5tct2")
 
@@ -82,8 +84,10 @@ expand_mode = 3
 [node name="Label" type="Label" parent="SteelContainer/WheelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hurkk")
+theme_override_font_sizes/font_size = 190
 text = " 5"
-label_settings = ExtResource("2_mtcmk")
 script = ExtResource("3_xw18s")
 prefabricate = SubResource("Resource_pq8mt")
 
@@ -100,8 +104,10 @@ expand_mode = 3
 [node name="Label" type="Label" parent="SteelContainer/PlateContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hurkk")
+theme_override_font_sizes/font_size = 190
 text = " 5"
-label_settings = ExtResource("2_mtcmk")
 script = ExtResource("3_xw18s")
 prefabricate = SubResource("Resource_h3tir")
 
@@ -123,8 +129,10 @@ expand_mode = 3
 [node name="Label" type="Label" parent="WoodContainer/RodContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hurkk")
+theme_override_font_sizes/font_size = 190
 text = " 5"
-label_settings = ExtResource("2_mtcmk")
 script = ExtResource("3_xw18s")
 prefabricate = SubResource("Resource_4dab5")
 
@@ -141,8 +149,10 @@ expand_mode = 3
 [node name="Label" type="Label" parent="WoodContainer/WheelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hurkk")
+theme_override_font_sizes/font_size = 190
 text = " 5"
-label_settings = ExtResource("2_mtcmk")
 script = ExtResource("3_xw18s")
 prefabricate = SubResource("Resource_b0m61")
 
@@ -159,7 +169,9 @@ expand_mode = 3
 [node name="Label" type="Label" parent="WoodContainer/PlateContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hurkk")
+theme_override_font_sizes/font_size = 190
 text = " 5"
-label_settings = ExtResource("2_mtcmk")
 script = ExtResource("3_xw18s")
 prefabricate = SubResource("Resource_c6i53")
