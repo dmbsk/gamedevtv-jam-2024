@@ -423,17 +423,7 @@ layer_0/tile_data = PackedInt32Array(589823, 65536, 1, 524287, 65536, 1, 458751,
 position = Vector2(50, 152)
 floor_block_on_wall = false
 script = ExtResource("3_oeujf")
-move_speed = null
-max_weight_capacity = null
 mobility_curve = ExtResource("4_2iuq7")
-floor_acceleration = null
-air_acceleration = null
-floor_friction = null
-air_friction = null
-jump_buffer_ms = null
-variable_jump_velocity_min = null
-variable_jump_velocity_max = null
-jump_coyote_ms = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(1, 0)

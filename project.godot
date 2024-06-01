@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 GlobalNeeds="*res://globals/global_needs.gd"
 GlobalBackpack="*res://globals/global_backpack.gd"
 GlobalSignals="*res://globals/global_signals.gd"
+GlobalPoints="*res://globals/global_points.gd"
 
 [debug]
 

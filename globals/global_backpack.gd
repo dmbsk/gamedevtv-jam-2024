@@ -6,7 +6,7 @@ var min_items := 0
 var weight := 0.0
 var max_weight_capacity := calculate_max_weight()
 
-var prefabricate_counts: Dictionary = {
+var default_prefabricate_counts: Dictionary = {
   Prefabricate.PrefabricateMaterial.STEEL: {
   Prefabricate.PrefabricateType.ROD: 0,
   Prefabricate.PrefabricateType.WHEEL: 0,
@@ -19,7 +19,13 @@ var prefabricate_counts: Dictionary = {
   }
 }
 
+var prefabricate_counts := default_prefabricate_counts.duplicate(true)
+
 signal CountUpdated(p: PrefabricateResource, count: int)
+
+func _ready() -> void:
+  GlobalSignals.RoundRestart.connect(_on_round_restart)
+  pass
 
 func update_count(p: PrefabricateResource, count: int) -> void:
   var currentCount = prefabricate_counts[p.prefabricate_material][p.prefabricate_type]
@@ -38,3 +44,6 @@ func calculate_max_weight() -> float:
     for type in Prefabricate.PrefabricateType.values():
       temp_weigth += PrefabricateWeight.get_weight(material, type) * max_items
   return temp_weigth
+
+func _on_round_restart():
+  prefabricate_counts = default_prefabricate_counts.duplicate(true)

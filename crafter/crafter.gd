@@ -6,7 +6,7 @@ func _on_interact_act() -> void:
 	var weight = deposit()
 	if weight:
 		GlobalSignals.CrafterDeposit.emit(weight)
-		GlobalSignals.PointsAdd.emit(weight)
+		GlobalPoints.total_points += weight
 
 func deposit() -> float:
 	var weight := 0.0

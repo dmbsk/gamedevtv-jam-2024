@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq5h6sr7p662f"]
+[gd_scene load_steps=4 format=3 uid="uid://dq5h6sr7p662f"]
 
 [ext_resource type="PackedScene" uid="uid://bwu2oxw53tby8" path="res://ui/stopwatch/stopwatch.tscn" id="1_8hvw7"]
 [ext_resource type="PackedScene" uid="uid://cua6u88sberab" path="res://ui/Storage.tscn" id="2_thlu0"]
+[ext_resource type="PackedScene" uid="uid://ch3rp5o5mri7l" path="res://ui/end_ui/end_ui.tscn" id="3_km41x"]
 
 [node name="MainUi" type="Control"]
 layout_mode = 3
@@ -32,3 +33,12 @@ offset_left = -197.0
 offset_top = -92.0
 offset_right = -9.0
 offset_bottom = -10.0
+
+[node name="EndUi" parent="." instance=ExtResource("3_km41x")]
+visible = false
+layout_mode = 1
+offset_left = 312.0
+offset_top = 64.0
+offset_right = -136.0
+offset_bottom = 64.0
+scale = Vector2(0.75, 0.75)

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bb22uor6lgcf4" path="res://tileset/tilemap.tscn" id="1_y31xb"]
 [ext_resource type="PackedScene" uid="uid://cf3hdoifrnteg" path="res://screen/screen.tscn" id="2_wp3mw"]
 [ext_resource type="PackedScene" uid="uid://dq4mdl7tst47d" path="res://player/player.tscn" id="3_aa1e8"]
-[ext_resource type="Script" path="res://smooth_camera.component.gd" id="4_m468g"]
+[ext_resource type="Script" path="res://components/smooth_camera.component.gd" id="4_m468g"]
 [ext_resource type="PackedScene" uid="uid://bouxaqsoqpcbs" path="res://button/button.tscn" id="5_gv7jv"]
 [ext_resource type="Script" path="res://prefabricate/prefabricate_resource.gd" id="6_5kb4d"]
 [ext_resource type="Texture2D" uid="uid://b2nehdnn8fo00" path="res://assets/steel_plate.png" id="7_dw5bq"]

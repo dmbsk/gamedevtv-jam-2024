@@ -6,7 +6,7 @@ var max_total_count := 6
 
 var total_count := 0
 
-var prefabricate_counts: Dictionary = {
+var default_prefabricate_counts: Dictionary = {
 	Prefabricate.PrefabricateMaterial.STEEL: {
 	Prefabricate.PrefabricateType.ROD: 0,
 	Prefabricate.PrefabricateType.WHEEL: 0,
@@ -19,10 +19,13 @@ var prefabricate_counts: Dictionary = {
 	}
 }
 
+var prefabricate_counts := default_prefabricate_counts.duplicate(true)
+
 signal CountUpdated(p: PrefabricateResource, count: int)
 
 func _ready() -> void:
 	generate_counts()
+	GlobalSignals.RoundRestart.connect(on_round_reset)
 
 func generate_counts() -> void:
 	var left_total_count = max_total_count
@@ -48,3 +51,7 @@ func update_count(p: PrefabricateResource, count: int) -> void:
 
 	if total_count == 0:
 		generate_counts()
+
+func on_round_reset() -> void:
+	prefabricate_counts = default_prefabricate_counts.duplicate(true)
+	generate_counts()
