@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b2nehdnn8fo00" path="res://assets/steel_plate.png" id="7_v46dn"]
 [ext_resource type="Texture2D" uid="uid://dc842mgyx7j26" path="res://assets/steel_rod.png" id="8_i0djp"]
 [ext_resource type="Texture2D" uid="uid://bt4jia1moluhu" path="res://assets/steel_wheel.png" id="9_p5r6d"]
+[ext_resource type="PackedScene" uid="uid://b65pjtf0iktel" path="res://prefabricate/attention_sprite.tscn" id="9_t4fiu"]
 [ext_resource type="Texture2D" uid="uid://d3b2jmwmlx4e1" path="res://assets/wood_plate.png" id="10_7j5yx"]
 [ext_resource type="Texture2D" uid="uid://o3du4qi67dea" path="res://assets/wood_rod.png" id="11_yvbh3"]
-[ext_resource type="Texture2D" uid="uid://cagp5s4f5klvc" path="res://assets/wood_wheel.png" id="12_d4mh1"]
 [ext_resource type="PackedScene" uid="uid://dulaqu0hrq3b5" path="res://screen/points_screen.tscn" id="13_rsdny"]
 [ext_resource type="PackedScene" uid="uid://c2nol876vpup4" path="res://crafter/crafter_2.tscn" id="15_f63il"]
 [ext_resource type="Script" path="res://components/looped_audio_stream_player_2D.component.gd" id="16_ipool"]
@@ -79,24 +79,26 @@ offset_smoothness = null
 position = Vector2(782, -19)
 crafting_material = SubResource("Resource_hpnsw")
 
-[node name="WoodWheel" type="Sprite2D" parent="Wood/Button5"]
-position = Vector2(8, -13)
-texture = ExtResource("12_d4mh1")
+[node name="AttentionSprite" parent="Wood/Button5" instance=ExtResource("9_t4fiu")]
 
 [node name="Button6" parent="Wood" instance=ExtResource("4_j3fbd")]
 position = Vector2(-242, 126)
 crafting_material = SubResource("Resource_34jhq")
 
-[node name="WoodRod" type="Sprite2D" parent="Wood/Button6"]
-position = Vector2(8, -13)
+[node name="AttentionSprite" parent="Wood/Button6" instance=ExtResource("9_t4fiu")]
+
+[node name="AttentionSprite" parent="Wood/Button6/AttentionSprite/Node2D" index="0"]
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("11_yvbh3")
 
 [node name="Button7" parent="Wood" instance=ExtResource("4_j3fbd")]
 position = Vector2(-25, 109)
 crafting_material = SubResource("Resource_3b03t")
 
-[node name="WoodPlate" type="Sprite2D" parent="Wood/Button7"]
-position = Vector2(8, -13)
+[node name="AttentionSprite" parent="Wood/Button7" instance=ExtResource("9_t4fiu")]
+
+[node name="AttentionSprite" parent="Wood/Button7/AttentionSprite/Node2D" index="0"]
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("10_7j5yx")
 
 [node name="Steel" type="Node2D" parent="."]
@@ -105,24 +107,32 @@ texture = ExtResource("10_7j5yx")
 position = Vector2(-219, -99)
 crafting_material = SubResource("Resource_xdell")
 
-[node name="SteelRod" type="Sprite2D" parent="Steel/Button"]
-position = Vector2(8, -13)
+[node name="AttentionSprite" parent="Steel/Button" instance=ExtResource("9_t4fiu")]
+
+[node name="Node2D" parent="Steel/Button/AttentionSprite" index="0"]
+position = Vector2(0, -0.6)
+
+[node name="AttentionSprite" parent="Steel/Button/AttentionSprite/Node2D" index="0"]
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("8_i0djp")
 
 [node name="Button2" parent="Steel" instance=ExtResource("4_j3fbd")]
 position = Vector2(622, 173)
 crafting_material = SubResource("Resource_ichc4")
 
-[node name="SteelWheel" type="Sprite2D" parent="Steel/Button2"]
-position = Vector2(8, -13)
+[node name="AttentionSprite" parent="Steel/Button2" instance=ExtResource("9_t4fiu")]
+
+[node name="AttentionSprite" parent="Steel/Button2/AttentionSprite/Node2D" index="0"]
 texture = ExtResource("9_p5r6d")
 
 [node name="Button3" parent="Steel" instance=ExtResource("4_j3fbd")]
 position = Vector2(103, 253)
 crafting_material = SubResource("Resource_61q01")
 
-[node name="SteelPlate" type="Sprite2D" parent="Steel/Button3"]
-position = Vector2(8, -13)
+[node name="AttentionSprite" parent="Steel/Button3" instance=ExtResource("9_t4fiu")]
+
+[node name="AttentionSprite" parent="Steel/Button3/AttentionSprite/Node2D" index="0"]
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("7_v46dn")
 
 [node name="Player" parent="." instance=ExtResource("2_ngmcc")]
@@ -143,3 +153,10 @@ stream = ExtResource("16_k5iep")
 volume_db = -12.5
 autoplay = true
 script = ExtResource("16_ipool")
+
+[editable path="Wood/Button5/AttentionSprite"]
+[editable path="Wood/Button6/AttentionSprite"]
+[editable path="Wood/Button7/AttentionSprite"]
+[editable path="Steel/Button/AttentionSprite"]
+[editable path="Steel/Button2/AttentionSprite"]
+[editable path="Steel/Button3/AttentionSprite"]

@@ -29,14 +29,15 @@ func _ready() -> void:
 
 func generate_counts() -> void:
 	var left_total_count = max_total_count
-	for material_type in prefabricate_counts:
-		for prefabricate_type in prefabricate_counts[material_type]:
-			var count := randi_range(min_items, min(left_total_count, max_items))
-			total_count += count
-			left_total_count -= count
-			update_count(PrefabricateResource.init(material_type, prefabricate_type), count)
-			if left_total_count == 0:
-				return
+	while left_total_count == max_total_count:
+		for material_type in prefabricate_counts:
+			for prefabricate_type in prefabricate_counts[material_type]:
+				var count := randi_range(min_items, min(left_total_count, max_items))
+				total_count += count
+				left_total_count -= count
+				update_count(PrefabricateResource.init(material_type, prefabricate_type), count)
+				if left_total_count == 0:
+					return
 
 func update_count(p: PrefabricateResource, count: int) -> void:
 	var currentCount = prefabricate_counts[p.prefabricate_material][p.prefabricate_type]

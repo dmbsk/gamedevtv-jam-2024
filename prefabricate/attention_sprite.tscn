@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://b65pjtf0iktel"]
+
+[ext_resource type="Texture2D" uid="uid://cagp5s4f5klvc" path="res://assets/wood_wheel.png" id="1_sybgm"]
+
+[sub_resource type="Animation" id="Animation_u62u3"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_tc0uc"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttentionSprite/Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.75),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, -6), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trljs"]
+_data = {
+"RESET": SubResource("Animation_u62u3"),
+"bounce": SubResource("Animation_tc0uc")
+}
+
+[node name="AttentionSprite" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -4.71818)
+
+[node name="AttentionSprite" type="Sprite2D" parent="Node2D"]
+position = Vector2(8, -14.0625)
+scale = Vector2(1.50021, 1.50021)
+texture = ExtResource("1_sybgm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_trljs")
+}
+autoplay = "bounce"
