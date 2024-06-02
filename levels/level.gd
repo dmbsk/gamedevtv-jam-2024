@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var round_time_in_minutes: float = 0.1
+@export var round_time_in_minutes: float = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
