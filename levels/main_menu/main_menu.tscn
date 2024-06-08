@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://coqvi4c6707pf"]
+[gd_scene load_steps=72 format=3 uid="uid://coqvi4c6707pf"]
 
 [ext_resource type="PackedScene" uid="uid://bb22uor6lgcf4" path="res://tileset/tilemap.tscn" id="1_5vbvd"]
 [ext_resource type="PackedScene" uid="uid://dnad4r3nwxpy" path="res://interact/interact_game_start.tscn" id="1_601op"]
@@ -12,6 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://cjc6exdo2fcvs" path="res://assets/character/walk.png" id="6_xatbr"]
 [ext_resource type="Texture2D" uid="uid://dri475fs2uujj" path="res://assets/character/run.png" id="7_ol3nt"]
 [ext_resource type="AudioStream" uid="uid://vkij5a7kg6cp" path="res://assets/sounds/sfx_jump_07-80241.mp3" id="9_8o65u"]
+[ext_resource type="Theme" uid="uid://r2vl2omve2gw" path="res://ui/end_ui/ui_theme.tres" id="13_kgiw8"]
+[ext_resource type="Script" path="res://levels/main_menu/volume_slider.gd" id="14_1u6ar"]
+[ext_resource type="PackedScene" uid="uid://buinsxdsdq1yo" path="res://ui/mobility_bar.tscn" id="14_k171t"]
+[ext_resource type="PackedScene" uid="uid://bouxaqsoqpcbs" path="res://button/button.tscn" id="16_bsct1"]
+[ext_resource type="Script" path="res://prefabricate/prefabricate_resource.gd" id="17_gha31"]
+[ext_resource type="PackedScene" uid="uid://b65pjtf0iktel" path="res://prefabricate/attention_sprite.tscn" id="18_f7t1c"]
+[ext_resource type="Texture2D" uid="uid://b2nehdnn8fo00" path="res://assets/steel_plate.png" id="19_33vhh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r50l6"]
 radius = 5.0
@@ -408,6 +415,11 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="Resource" id="Resource_6opky"]
+script = ExtResource("17_gha31")
+prefabricate_material = 0
+prefabricate_type = 2
+
 [node name="MainMenu" type="Node2D"]
 position = Vector2(14, 0)
 script = ExtResource("1_notts")
@@ -417,10 +429,58 @@ level = ExtResource("2_xlg44")
 position = Vector2(315, 152)
 
 [node name="PlatformMap" parent="." instance=ExtResource("1_5vbvd")]
-layer_0/tile_data = PackedInt32Array(589823, 65536, 1, 524287, 65536, 1, 458751, 65536, 1, 393215, 262144, 4, 327679, 65536, 1, 262143, 262144, 4, 196607, 65536, 1, 131071, 65536, 1, 65535, 65536, 1, -1, 65536, 1, -65536, 65536, 1, -65535, 65536, 1, -65534, 65536, 1, -65533, 262144, 1, -65532, 65536, 1, -65531, 262144, 1, -65530, 65536, 1, -65529, 65536, 1, -65528, 65536, 1, -65527, 65536, 1, -65526, 65536, 1, -65525, 65536, 1, -65524, 65536, 1, -65522, 65536, 1, -65523, 65536, 1, 786441, 131072, 2, 851977, 65536, 1, 851978, 262144, 1, 720907, 327680, 2, 786443, 262144, 4, 851979, 65536, 1, 720908, 262144, 1, 786444, 65536, 1, 851980, 262144, 1, 786445, 262144, 1, 851981, 65536, 1, 720910, 196608, 1, 851982, 65536, 1, 851983, 65536, 1, 851984, 65536, 1, 655377, 65536, 5, 720913, 65536, 6, 851985, 262144, 1, 524306, 131072, 1, 655378, 131072, 5, 786450, 131072, 2, 851986, 65536, 1, 655379, 131072, 5, 786451, 524288, 1, 851987, 65536, 1, 655380, 131072, 5, 786452, 589824, 2, 851988, 65536, 1, 655381, 131072, 5, 786453, 655360, 2, 851989, 65536, 1, 393238, 196608, 1, 655382, 131072, 5, 720918, 655360, 3, 786454, 655360, 4, 851990, 65536, 1, 327703, 65536, 1, 393239, 65536, 1, 458775, 262144, 1, 524311, 65536, 1, 589847, 65536, 1, 655383, 65536, 1, 720919, 65536, 1, 786455, 65536, 1, 851991, 65536, 1, 851976, 65536, 1, 851975, 65536, 1, 851974, 65536, 1, 851973, 65536, 1, 851971, 65536, 1, 851970, 262144, 1, 851969, 262144, 1, 851967, 65536, 1, 917503, 65536, 1, 851968, 262144, 4, 720895, 65536, 1, 655359, 65536, 1, 786431, 262144, 4, -65521, 65536, 1, -65520, 262144, 1, -65519, 65536, 1, -65518, 65536, 1, -65517, 65536, 1, -65516, 65536, 1, -65515, 65536, 1, -65514, 65536, 1, -65513, 65536, 1, 23, 65536, 1, 65559, 262144, 4, 131095, 65536, 1, 196631, 65536, 1, 262167, 65536, 1, 720900, 196608, 6, 786436, 196608, 6, 851972, 65536, 1, 655363, 131072, 5, 655362, 131072, 5, 655361, 131072, 5, 655360, 131072, 5, 720896, 262144, 1, 786432, 262144, 4, 786433, 262144, 4, 393219, 131072, 2, 589832, 131072, 2, 786435, 131072, 2, 655364, 196608, 5, 196626, 131072, 2, 22, 196608, 1, 0, 131072, 1, 786437, 589824, 2, 786438, 655360, 2, 524310, 655360, 3, 589846, 655360, 4, 786442, 589824, 3, 589845, 589824, 3, 589824, 589824, 2, 589825, 655360, 2, 524295, 262144, 2, 524303, 262144, 2, 524300, 327680, 2, 524298, 393216, 2, 1, 917504, 1, 2, 983040, 1, 3, 983040, 1, 4, 983040, 1, 5, 983040, 1, 6, 983040, 1, 7, 983040, 1, 8, 983040, 1, 65537, 720896, 2, 131073, 917504, 2, 9, 983040, 1, 10, 1048576, 1, 65538, 786432, 2, 131074, 983040, 2, 131075, 983040, 2, 65539, 786432, 2, 65540, 786432, 2, 131076, 983040, 2, 65541, 786432, 2, 131077, 983040, 2, 65542, 786432, 2, 131078, 983040, 2, 65543, 786432, 2, 131079, 983040, 2, 65544, 786432, 2, 131080, 983040, 2, 65545, 786432, 2, 131081, 983040, 2, 65546, 851968, 2, 131082, 1048576, 2, 786448, 589824, 3, 786449, 65536, 6, 14, 524288, 2, 20, 524288, 2, 786440, 655360, 7, 720917, 524288, 1, 589831, 458752, 2)
+layer_0/tile_data = PackedInt32Array(589823, 65536, 1, 524287, 65536, 1, 458751, 65536, 1, 393215, 262144, 4, 327679, 65536, 1, 262143, 262144, 4, 196607, 65536, 1, 131071, 65536, 1, 65535, 65536, 1, -1, 65536, 1, -65536, 65536, 1, -65535, 65536, 1, -65534, 65536, 1, -65533, 262144, 1, -65532, 65536, 1, -65531, 262144, 1, -65530, 65536, 1, -65529, 65536, 1, -65528, 65536, 1, -65527, 65536, 1, -65526, 65536, 1, -65525, 65536, 1, -65524, 65536, 1, -65522, 65536, 1, -65523, 65536, 1, 786441, 131072, 2, 851977, 65536, 1, 851978, 262144, 1, 720907, 327680, 2, 786443, 262144, 4, 851979, 65536, 1, 720908, 262144, 1, 786444, 65536, 1, 851980, 262144, 1, 786445, 262144, 1, 851981, 65536, 1, 720910, 196608, 1, 851982, 65536, 1, 851983, 65536, 1, 851984, 65536, 1, 655377, 65536, 5, 720913, 65536, 6, 851985, 262144, 1, 524306, 131072, 1, 655378, 131072, 5, 786450, 131072, 2, 851986, 65536, 1, 655379, 131072, 5, 786451, 524288, 1, 851987, 65536, 1, 655380, 131072, 5, 786452, 589824, 2, 851988, 65536, 1, 655381, 131072, 5, 786453, 655360, 2, 851989, 65536, 1, 393238, 196608, 1, 655382, 131072, 5, 720918, 655360, 3, 786454, 655360, 4, 851990, 65536, 1, 327703, 65536, 1, 393239, 65536, 1, 458775, 262144, 1, 524311, 65536, 1, 589847, 65536, 1, 655383, 65536, 1, 720919, 65536, 1, 786455, 65536, 1, 851991, 65536, 1, 851976, 65536, 1, 851975, 65536, 1, 851974, 65536, 1, 851973, 65536, 1, 851971, 65536, 1, 851970, 262144, 1, 851969, 262144, 1, 851967, 65536, 1, 917503, 65536, 1, 851968, 262144, 4, 720895, 65536, 1, 655359, 65536, 1, 786431, 262144, 4, -65521, 65536, 1, -65520, 262144, 1, -65519, 65536, 1, -65518, 65536, 1, -65517, 65536, 1, -65516, 65536, 1, -65515, 65536, 1, -65514, 65536, 1, -65513, 65536, 1, 23, 65536, 1, 65559, 262144, 4, 131095, 65536, 1, 196631, 65536, 1, 262167, 65536, 1, 720900, 196608, 6, 786436, 196608, 6, 851972, 65536, 1, 655363, 131072, 5, 655362, 131072, 5, 655361, 131072, 5, 655360, 131072, 5, 720896, 262144, 1, 786432, 262144, 4, 786433, 262144, 4, 393219, 131072, 2, 589832, 131072, 2, 786435, 131072, 2, 655364, 196608, 5, 196626, 131072, 2, 22, 196608, 1, 0, 131072, 1, 786437, 589824, 2, 786438, 655360, 2, 524310, 655360, 3, 589846, 655360, 4, 786442, 589824, 3, 589845, 589824, 3, 589824, 589824, 2, 589825, 655360, 2, 524295, 262144, 2, 524303, 262144, 2, 524300, 327680, 2, 524298, 393216, 2, 1, 917504, 1, 2, 983040, 1, 3, 983040, 1, 4, 983040, 1, 5, 983040, 1, 6, 983040, 1, 7, 983040, 1, 8, 983040, 1, 65537, 720896, 2, 131073, 917504, 2, 9, 983040, 1, 10, 1048576, 1, 65538, 786432, 2, 131074, 983040, 2, 131075, 983040, 2, 65539, 786432, 2, 65540, 786432, 2, 131076, 983040, 2, 65541, 786432, 2, 131077, 983040, 2, 65542, 786432, 2, 131078, 983040, 2, 65543, 786432, 2, 131079, 983040, 2, 65544, 786432, 2, 131080, 983040, 2, 65545, 786432, 2, 131081, 983040, 2, 65546, 851968, 2, 131082, 1048576, 2, 786448, 589824, 3, 786449, 65536, 6, 14, 524288, 2, 20, 524288, 2, 720917, 524288, 1, 589831, 458752, 2, 589828, 655360, 7)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(185, 104)
+zoom = Vector2(3, 3)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 10.0
+offset_right = 170.0
+offset_bottom = 42.0
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_usml2")
+theme_override_font_sizes/font_size = 26
+text = "Last Shift"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 11.0
+offset_right = 322.0
+offset_bottom = 45.0
+size_flags_horizontal = 0
+theme = ExtResource("13_kgiw8")
+theme_override_colors/font_color = Color(0.796078, 0.462745, 0.360784, 1)
+theme_override_colors/font_outline_color = Color(0.145098, 0.129412, 0.243137, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_usml2")
+theme_override_font_sizes/font_size = 14
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 29.0
+offset_right = 342.0
+offset_bottom = 45.0
+focus_mode = 0
+theme = ExtResource("13_kgiw8")
+min_value = -25.0
+max_value = 25.0
+script = ExtResource("14_1u6ar")
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(50, 152)
+position = Vector2(56, 153)
 floor_block_on_wall = false
 script = ExtResource("3_oeujf")
 mobility_curve = ExtResource("4_2iuq7")
@@ -435,20 +495,42 @@ animation = &"run_right"
 autoplay = "idle_right"
 frame_progress = 0.899598
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+
+[node name="Control" type="Control" parent="Player/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MobilityBar" parent="Player/CanvasLayer/Control" instance=ExtResource("14_k171t")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.1
+anchor_top = -1.075
+anchor_right = -1.1
+anchor_bottom = -1.075
+offset_left = 1122.0
+offset_top = 449.0
+offset_right = 1159.0
+offset_bottom = 662.0
+metadata/_edit_use_anchors_ = true
+
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("9_8o65u")
 volume_db = -7.5
 
-[node name="Label" type="Label" parent="."]
-offset_left = 25.0
-offset_top = 10.0
-offset_right = 170.0
-offset_bottom = 42.0
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_usml2")
-theme_override_font_sizes/font_size = 26
-text = "Last Shift"
+[node name="Button3" parent="." instance=ExtResource("16_bsct1")]
+position = Vector2(143, 205)
+crafting_material = SubResource("Resource_6opky")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(185, 104)
-zoom = Vector2(3, 3)
+[node name="AttentionSprite" parent="Button3" instance=ExtResource("18_f7t1c")]
+
+[node name="AttentionSprite" parent="Button3/AttentionSprite/Node2D" index="0"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("19_33vhh")
+
+[connection signal="value_changed" from="Control/HSlider" to="Control/HSlider" method="_on_value_changed"]
+
+[editable path="Button3/AttentionSprite"]

@@ -21,13 +21,14 @@ var default_prefabricate_counts: Dictionary = {
 
 var prefabricate_counts := default_prefabricate_counts.duplicate(true)
 
-signal CountUpdated(p: PrefabricateResource, count: int)
+signal CountUpdated(p: PrefabricateResource, count: int, fromDeposit: bool)
 
 func _ready() -> void:
   GlobalSignals.RoundRestart.connect(_on_round_restart)
+  GlobalSignals.RoundStart.connect(_on_round_start)
   pass
 
-func update_count(p: PrefabricateResource, count: int) -> void:
+func update_count(p: PrefabricateResource, count: int, fromDeposit: bool) -> void:
   var currentCount = prefabricate_counts[p.prefabricate_material][p.prefabricate_type]
   var nextCount = clamp(currentCount + count, min_items, max_items)
 
@@ -36,7 +37,7 @@ func update_count(p: PrefabricateResource, count: int) -> void:
     
   prefabricate_counts[p.prefabricate_material][p.prefabricate_type] = nextCount
   weight += p.prefabricate_weight
-  CountUpdated.emit(p, nextCount)
+  CountUpdated.emit(p, nextCount, fromDeposit)
 
 func calculate_max_weight() -> float:
   var temp_weigth := 0.0
@@ -46,4 +47,7 @@ func calculate_max_weight() -> float:
   return temp_weigth
 
 func _on_round_restart():
+  prefabricate_counts = default_prefabricate_counts.duplicate(true)
+
+func _on_round_start(time: float):
   prefabricate_counts = default_prefabricate_counts.duplicate(true)

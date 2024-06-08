@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var move_speed := 110.0
-@export var max_weight_capacity := 100
+@export var max_weight_capacity := 100.0
 @export var mobility_curve: Curve
 @export var floor_acceleration := 200.0
 @export var air_acceleration := 200.0
@@ -11,11 +11,15 @@ class_name Player
 @export var air_friction := 0.0
 
 @onready var jump_audio: AudioStreamPlayer2D = $JumpAudio
+@onready var mobility_bar: TextureProgressBar = %MobilityBar
+
 var jump_audio_can_play := true
 
 var weight_capacity := 0.0:
 	set(value):
-		weight_capacity = clampf(value / max_weight_capacity, 0.0, 1.0)
+		weight_capacity += value / max_weight_capacity
+		weight_capacity = clampf(weight_capacity, 0.0, 1.0)
+		mobility_bar.value = weight_capacity
 
 var last_direction := 0.0
 var can_anim_jump := true
@@ -63,6 +67,8 @@ func _ready() -> void:
 	GlobalSignals.CrafterDeposit.connect(handle_deposit)
 	setup_jump_timer()
 	setup_coyote_timer()
+
+	mobility_bar.value = weight_capacity
 
 func _process(delta: float) -> void:
 	# Add the gravity.
@@ -163,7 +169,10 @@ func get_friction() -> float:
 func handle_deposit(weight: float) -> void:
 	weight_capacity -= weight
 
-func handle_backpack_change(p: PrefabricateResource, count: int) -> void:
+func handle_backpack_change(p: PrefabricateResource, count: int, fromDeposit: bool) -> void:
+	if fromDeposit:
+		return
+
 	weight_capacity = weight_capacity + p.prefabricate_weight
 
 func handle_time_end():

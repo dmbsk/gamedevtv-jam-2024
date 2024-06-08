@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bb22uor6lgcf4" path="res://tileset/tilemap.tscn" id="3_cyfhc"]
 [ext_resource type="PackedScene" uid="uid://cf3hdoifrnteg" path="res://screen/screen.tscn" id="3_k34tu"]
 [ext_resource type="PackedScene" uid="uid://bouxaqsoqpcbs" path="res://button/button.tscn" id="4_j3fbd"]
+[ext_resource type="PackedScene" uid="uid://c2nol876vpup4" path="res://crafter/crafter.tscn" id="4_rqn1w"]
 [ext_resource type="Script" path="res://components/smooth_camera.component.gd" id="5_v2r8m"]
 [ext_resource type="Script" path="res://prefabricate/prefabricate_resource.gd" id="5_vxruk"]
 [ext_resource type="Texture2D" uid="uid://b2nehdnn8fo00" path="res://assets/steel_plate.png" id="7_v46dn"]
@@ -14,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://d3b2jmwmlx4e1" path="res://assets/wood_plate.png" id="10_7j5yx"]
 [ext_resource type="Texture2D" uid="uid://o3du4qi67dea" path="res://assets/wood_rod.png" id="11_yvbh3"]
 [ext_resource type="PackedScene" uid="uid://dulaqu0hrq3b5" path="res://screen/points_screen.tscn" id="13_rsdny"]
-[ext_resource type="PackedScene" uid="uid://c2nol876vpup4" path="res://crafter/crafter_2.tscn" id="15_f63il"]
 [ext_resource type="Script" path="res://components/looped_audio_stream_player_2D.component.gd" id="16_ipool"]
 [ext_resource type="AudioStream" uid="uid://bojirjm2idh3a" path="res://assets/sounds/heist-195700.mp3" id="16_k5iep"]
 
@@ -59,7 +59,7 @@ layer_0/tile_data = PackedInt32Array(524284, 65536, 1, 524285, 65536, 1, 589821,
 [node name="PointsScreen" parent="." instance=ExtResource("13_rsdny")]
 position = Vector2(214, -32)
 
-[node name="Interact" parent="." instance=ExtResource("15_f63il")]
+[node name="Interact" parent="." instance=ExtResource("4_rqn1w")]
 position = Vector2(169, 24)
 
 [node name="Screen" parent="." instance=ExtResource("3_k34tu")]
@@ -137,16 +137,6 @@ texture = ExtResource("7_v46dn")
 
 [node name="Player" parent="." instance=ExtResource("2_ngmcc")]
 position = Vector2(59, 16)
-move_speed = 110.0
-max_weight_capacity = 100
-floor_acceleration = 200.0
-air_acceleration = 200.0
-floor_friction = 1200.0
-air_friction = 0.0
-jump_buffer_ms = 0.1
-variable_jump_velocity_min = 100.0
-variable_jump_velocity_max = 450.0
-jump_coyote_ms = 0.15
 
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_k5iep")

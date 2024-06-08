@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://buinsxdsdq1yo"]
+
+[ext_resource type="Texture2D" uid="uid://dn5bv2axwgi2o" path="res://assets/tileset.png" id="1_1eesq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o4jb"]
+atlas = ExtResource("1_1eesq")
+region = Rect2(240, 48, 8, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqkds"]
+atlas = ExtResource("1_1eesq")
+region = Rect2(224, 48, 8, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg2an"]
+atlas = ExtResource("1_1eesq")
+region = Rect2(232, 48, 8, 48)
+
+[node name="MobilityBar" type="TextureProgressBar"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -8.0
+offset_right = -9.0
+offset_bottom = 205.0
+grow_horizontal = 0
+grow_vertical = 2
+max_value = 1.0
+step = 0.05
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_1o4jb")
+texture_over = SubResource("AtlasTexture_fqkds")
+texture_progress = SubResource("AtlasTexture_gg2an")

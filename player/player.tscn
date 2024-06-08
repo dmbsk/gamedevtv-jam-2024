@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dq4mdl7tst47d"]
+[gd_scene load_steps=61 format=3 uid="uid://dq4mdl7tst47d"]
 
 [ext_resource type="Texture2D" uid="uid://b6x5rt87hylt2" path="res://assets/character/jump.png" id="1_k6f74"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_y3bp8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjc6exdo2fcvs" path="res://assets/character/walk.png" id="4_aoyxy"]
 [ext_resource type="PackedScene" uid="uid://dq5h6sr7p662f" path="res://ui/main_ui.tscn" id="7_sr6vt"]
 [ext_resource type="AudioStream" uid="uid://vkij5a7kg6cp" path="res://assets/sounds/sfx_jump_07-80241.mp3" id="8_hwvea"]
+[ext_resource type="PackedScene" uid="uid://buinsxdsdq1yo" path="res://ui/mobility_bar.tscn" id="8_sh2gc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r50l6"]
 radius = 5.0
@@ -407,17 +408,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 floor_block_on_wall = false
 script = ExtResource("1_y3bp8")
-move_speed = null
-max_weight_capacity = null
 mobility_curve = ExtResource("2_ym68j")
-floor_acceleration = null
-air_acceleration = null
-floor_friction = null
-air_friction = null
-jump_buffer_ms = null
-variable_jump_velocity_min = null
-variable_jump_velocity_max = null
-jump_coyote_ms = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -432,6 +423,10 @@ frame_progress = 0.899598
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainUi" parent="CanvasLayer" instance=ExtResource("7_sr6vt")]
+
+[node name="MobilityBar" parent="CanvasLayer/MainUi" instance=ExtResource("8_sh2gc")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_hwvea")
